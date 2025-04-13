@@ -10,7 +10,7 @@ CORS(app)  # Enable CORS for all routes
 os.makedirs('data', exist_ok=True)
 os.makedirs('configs', exist_ok=True)
 
-@app.route('/users/set-up', methods=['POST'])
+@app.route('/users/set-up/v1', methods=['POST'])
 def setup_user():
     data = request.json
     
