@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="form-container">
+    <h2>User Management</h2>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          placeholder="Enter username"
+          [ngClass]="{'error': userForm.get('username')?.invalid && userForm.get('username')?.touched}"
+        >
+        <div class="error-message" *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
+          Username is required and must be at least 3 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          formControlName="description"
+          placeholder="Enter description"
+          [ngClass]="{'error': userForm.get('description')?.invalid && userForm.get('description')?.touched}"
+        >
+        <div class="error-message" *ngIf="userForm.get('description')?.invalid && userForm.get('description')?.touched">
+          Description is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="group">Group</label>
+        <select
+          id="group"
+          formControlName="group"
+          [ngClass]="{'error': userForm.get('group')?.invalid && userForm.get('group')?.touched}"
+        >
+          <option value="">Select a group</option>
+          <option *ngFor="let group of groups" [value]="group">{{group}}</option>
+        </select>
+        <div class="error-message" *ngIf="userForm.get('group')?.invalid && userForm.get('group')?.touched">
+          Please select a group
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="publicKey">Public Key</label>
+        <textarea
+          id="publicKey"
+          formControlName="publicKey"
+          placeholder="Enter SSH public key"
+          rows="4"
+          [ngClass]="{'error': userForm.get('publicKey')?.invalid && userForm.get('publicKey')?.touched}"
+        ></textarea>
+        <div class="error-message" *ngIf="userForm.get('publicKey')?.invalid && userForm.get('publicKey')?.touched">
+          Please enter a valid SSH public key
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="userForm.invalid">Submit</button>
+      </div>
+    </form>
+
+    <div class="message-container">
+      <div class="success-message" *ngIf="successMessage">{{successMessage}}</div>
+      <div class="error-message" *ngIf="errorMessage">{{errorMessage}}</div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,39 @@
-# Python App
+# User Management API
 
-This is a Python project with a basic structure for web development.
+A Flask-based REST API for managing user configurations with SSH key storage.
+
+## Features
+
+- User registration with username, description, group, and SSH public key
+- Duplicate username prevention
+- Automatic configuration file generation
+- CORS enabled for frontend integration
+
+## API Endpoints
+
+### POST /users/set-up
+Creates a new user configuration.
+
+**Request Body:**
+```json
+{
+    "username": "string",
+    "description": "string",
+    "group": "string",
+    "publicKey": "string"
+}
+```
+
+**Responses:**
+- 201: User created successfully
+- 400: User already exists or missing required fields
+
+## File Structure
+
+- `data/users.txt`: Stores list of registered usernames (one per line)
+- `configs/`: Directory containing user configuration files
+  - Format: `username_YYYYMMDD.txt`
+  - Content: `username:group:description:publicKey`
 
 ## Setup
 
@@ -15,13 +48,17 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Project Structure
-- `src/`: Main source code directory
-- `tests/`: Test files directory
-- `venv/`: Virtual environment directory
-- `requirements.txt`: Project dependencies
-
-## Running Tests
+3. Run the application:
 ```bash
-pytest tests/
-``` 
+python src/app.py
+```
+
+The API will be available at `http://localhost:8050`
+
+## Dependencies
+
+- Flask: Web framework
+- Flask-CORS: Cross-Origin Resource Sharing support
+- Python-dotenv: Environment variable management
+- Requests: HTTP client library
+- Pytest: Testing framework 
