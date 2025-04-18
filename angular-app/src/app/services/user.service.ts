@@ -13,7 +13,7 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8050/users/set-up';
+  private apiUrl = 'http://3.254.63.138:8050/users/set-up';
 
   constructor(private http: HttpClient) { }
 

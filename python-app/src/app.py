@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, resources={r"/users/*": {"origins": "http://3.254.63.138:4200"}})  # Enable CORS for all routes
 
 # Ensure data and configs directories exist
 os.makedirs('data', exist_ok=True)
@@ -14,7 +14,7 @@ os.makedirs('configs', exist_ok=True)
 @app.route('/app/status', methods=['GET'])
 def status():
     return jsonify({"status": "server running"}), 200
-@app.route('/users/set-up/v1', methods=['POST'])
+@app.route('/users/set-up', methods=['POST'])
 def setup_user():
     data = request.json
     

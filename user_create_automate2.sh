@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -euo pipefail
+set -x
 
 # Figure out where the script lives, regardless of where you call it from
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
@@ -16,11 +17,20 @@ if [ ! -f "$CONFIG_FILE" ]; then
   exit 1
 fi
 
-# Read the single line from the file
+# Read the single line from the file, but allow read to fail without killing the script
+echo "Reading config…"
+set +e
 IFS=":" read -r username group description publicKey < "$CONFIG_FILE"
+read_status=$?
+set -e
+
+if (( read_status != 0 )); then
+  echo "❌  Warning: config read exited with code $read_status"
+  echo "   (most likely missing trailing newline in $CONFIG_FILE)"
+fi
 
 # Check that the username is not empty
-if [ -z "$username" ]; then
+if [ -z "${username:-}" ]; then
   echo "Username field is empty in $CONFIG_FILE. Exiting."
   exit 1
 fi
@@ -57,3 +67,4 @@ sudo chown "$username":"$group" "$AUTH_KEYS"
 echo "User processed successfully. Deleting the configuration file..."
 rm -f "$CONFIG_FILE"
 echo "Done."
+
