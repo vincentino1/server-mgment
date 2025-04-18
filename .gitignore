@@ -182,3 +182,6 @@ cython_debug/
 .pypirc
 
 .venv
+
+python-app/src/data/
+python-app/src/configs/

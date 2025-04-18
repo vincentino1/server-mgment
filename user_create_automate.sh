@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-CONFIG_FILE="configs/*.txt"
+CONFIG_FILE="configs/Vincent_20250413.txt"
 
 # Check if the CONFIG_FILE exists
 if [ ! -f "$CONFIG_FILE" ]; then

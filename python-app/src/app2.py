@@ -5,6 +5,7 @@ from celery import Celery
 from datetime import datetime
 import os
 
+# this is a comment
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
@@ -12,6 +13,7 @@ CORS(app)  # Enable CORS for all routes
 app.config.update(
     CELERY_BROKER_URL='redis://localhost:6379/0',  # or another message broker
     CELERY_RESULT_BACKEND='redis://localhost:6379/0'
+    djkeshfeif
 )
 
 def make_celery(app):
