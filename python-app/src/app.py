@@ -10,6 +10,10 @@ CORS(app)  # Enable CORS for all routes
 os.makedirs('data', exist_ok=True)
 os.makedirs('configs', exist_ok=True)
 
+
+@app.route('/app/status', methods=['GET'])
+def status():
+    return jsonify({"status": "server running"}), 200
 @app.route('/users/set-up/v1', methods=['POST'])
 def setup_user():
     data = request.json
