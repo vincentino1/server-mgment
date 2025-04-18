@@ -183,5 +183,5 @@ cython_debug/
 
 .venv
 
-python-app/src/data/
-python-app/src/configs/
+python-app/data/
+python-app/configs/
