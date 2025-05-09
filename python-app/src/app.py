@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app, resources={r"/users/*": {"origins": "http://44.204.41.45:4200"}})  # Enable CORS for all routes
+CORS(app, resources={r"/users/*": {"origins": "http://142.93.145.102:4200"}})  # Enable CORS for all routes
 
 # Ensure data and configs directories exist
 os.makedirs('data', exist_ok=True)
