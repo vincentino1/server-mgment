@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8050
 
-CMD [ "python src/app.py" ]
+CMD [ "python" "src/app.py" ]
