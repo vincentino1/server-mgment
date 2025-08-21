@@ -9,7 +9,7 @@ RUN npm install
 
 COPY . .
 
-RUN ng build --configuration production
+RUN npm run build --configuration production
 
 
 # Serve with NGINX
