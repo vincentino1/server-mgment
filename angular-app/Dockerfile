@@ -9,14 +9,14 @@ RUN npm install
 
 COPY . .
 
-RUN ng build
+RUN ng build --configuration production
 
 
 # Serve with NGINX
 
 FROM nginx:alpine
 
-COPY --from=builder /app/dist/angular-app/browser /usr/share/nginx/html
+COPY --from=build /app/dist/angular-app/browser /usr/share/nginx/html
 
 EXPOSE 80
 
