@@ -19,7 +19,7 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       DB_NAME: mydb
     ports:
-      - "8085:8085"
+      - "8050:8050"
     depends_on:
       - db
     restart: always
