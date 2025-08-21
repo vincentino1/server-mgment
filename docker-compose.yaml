@@ -1,7 +1,9 @@
+version: '3.8'
+
 services:
   frontend:
     build:
-      context: ./angular-app   # fixed typo
+      context: ./angular-app
     ports:
       - "80:80"
     depends_on:
@@ -11,12 +13,12 @@ services:
       - frontend
 
   api-service:
-    build: 
+    build:
       context: ./python-app
     environment:
-    - DB_USER=${POSTGRES_USER}
-    - DB_PASSWORD=${POSTGRES_PASSWORD}
-    - DB_NAME=mydb
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: mydb
     ports:
       - "8085:8085"
     depends_on:
@@ -29,11 +31,11 @@ services:
   db:
     image: postgres:15
     environment:
-    - POSTGRES_USER=${POSTGRES_USER}
-    - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    - POSTGRES_DB=mydb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: mydb
     volumes:
-      - db_data:/var/lib/postgresql/data   # <── Persistent storage
+      - db_data:/var/lib/postgresql/data
     restart: always
     networks:
       - backend
@@ -45,4 +47,4 @@ networks:
     driver: bridge
 
 volumes:
-  db_data:   # <── volume declared here
+  db_data:
