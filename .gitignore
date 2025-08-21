@@ -183,5 +183,7 @@ cython_debug/
 
 .venv
 
-python-app/data/** 
-python-app/configs/**
+data/users.txt
+configs/
+
+.DS_Store

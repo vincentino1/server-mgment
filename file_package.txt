@@ -1,1 +1,0 @@
-package manager packages the source code into a WAR or TAR file callled an Artifact and this will be later stored in Nexus 
