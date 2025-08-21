@@ -33,6 +33,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: mydb
+    ports:
+    - "5432:5432"  # host:container
     volumes:
       - db_data:/var/lib/postgresql/data
     restart: always
