@@ -7,7 +7,7 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}       
       DB_NAME: ${DB_NAME}
-      # remove DB_HOST so it uses .env value (localhost)
+      DB_HOST: db           # ← points to Postgres service
     ports:
       - "8050:8050"
     env_file:
@@ -19,7 +19,6 @@ services:
   db:
     image: postgres:15
     environment:
-      DB_HOST: db
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
