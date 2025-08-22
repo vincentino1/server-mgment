@@ -3,6 +3,8 @@ services:
   api-service:
     build: 
       context: .
+      dockerfile: Dockerfile
+    container_name: api_service
     environment:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}       
@@ -18,7 +20,8 @@ services:
     restart: always
 
   db:
-    image: postgres:14
+    image: postgres:15
+    container_name: postgres_db
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
