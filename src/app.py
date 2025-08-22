@@ -10,17 +10,17 @@ load_dotenv()
 
 app = Flask(__name__)
 # Get CORS allowed origins from environment variable with default
-cors_origin = os.getenv("CORS_ORIGIN", "http://3.84.117.3:4200")
+cors_origin = os.getenv("CORS_ORIGIN", "http://159.203.27.125:4200")
 CORS(app, resources={r"/users/*": {"origins": cors_origin}})  # Enable CORS for all routes
 
 # Ensure configs directory exists
 os.makedirs('configs', exist_ok=True)
 
 # Database connection parameters from environment variables
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_NAME = os.getenv("DB_NAME", "devops_user_table")
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "root")
+DB_HOST = os.getenv("DB_HOST", "159.203.27.125")
+DB_NAME = os.getenv("DB_NAME", "mydb")
+DB_USER = os.getenv("DB_USER", "admin")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "admin123")
 
 def get_db_connection():
     """Create and return a database connection"""
