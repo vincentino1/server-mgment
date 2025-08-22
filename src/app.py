@@ -109,7 +109,7 @@ migrate_existing_users()
 
 @app.route('/app/status', methods=['GET'])
 def status():
-    return jsonify({"status": "server running with new changes"}), 200
+    return jsonify({"status": "server running with new changes number 2"}), 200
 
 @app.route('/users/update', methods=['PUT'])
 def update_user():
