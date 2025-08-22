@@ -10,6 +10,8 @@ services:
       DB_NAME: mydb
     ports:
       - "8085:8085"
+    env_file:
+      - .env
     depends_on:
       - db
     restart: always
