@@ -10,7 +10,7 @@ load_dotenv()
 
 app = Flask(__name__)
 # Get CORS allowed origins from environment variable with default
-cors_origin = os.getenv("CORS_ORIGIN", "http://159.203.27.125")
+cors_origin = os.getenv("CORS_ORIGIN", "http://159.203.27.125/")
 CORS(app, resources={r"/users/*": {"origins": cors_origin}})  # Enable CORS for all routes
 
 # Ensure configs directory exists
@@ -109,7 +109,7 @@ migrate_existing_users()
 
 @app.route('/app/status', methods=['GET'])
 def status():
-    return jsonify({"status": "server running"}), 200
+    return jsonify({"status": "server running with new changes"}), 200
 
 @app.route('/users/update', methods=['PUT'])
 def update_user():
