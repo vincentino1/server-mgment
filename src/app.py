@@ -10,7 +10,7 @@ load_dotenv()
 
 app = Flask(__name__)
 # Get CORS allowed origins from environment variable with default
-cors_origin = os.getenv("CORS_ORIGIN", "http://159.203.27.125/")
+cors_origin = os.getenv("CORS_ORIGIN", "http://159.203.27.125")
 CORS(app, resources={r"/users/*": {"origins": cors_origin}})  # Enable CORS for all routes
 
 # Ensure configs directory exists
