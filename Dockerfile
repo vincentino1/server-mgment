@@ -6,10 +6,14 @@ WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Create configs folder
+RUN mkdir -p configs
+
+# Copy rest of the application
 COPY . .
 
 RUN mkdir -p configs
 
 EXPOSE 8050
 
-CMD [ "python", "src/app.py" ]
+CMD ["python", "src/app.py"]
