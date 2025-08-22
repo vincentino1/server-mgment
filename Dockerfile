@@ -8,6 +8,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN mkdir -p configs
+
 EXPOSE 8050
 
 CMD [ "python", "src/app.py" ]
